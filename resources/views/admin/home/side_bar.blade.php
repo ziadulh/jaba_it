@@ -34,9 +34,9 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item {{((Route::currentRouteName()) == ('students.create')) || ((Route::currentRouteName()) == ('students.index'))  || ((Route::currentRouteName()) == ('students.edit')) ? 'menu-open' : ''}}">
+          <li class="nav-item {{((Route::currentRouteName()) == ('admin.students.create')) || ((Route::currentRouteName()) == ('admin.students.index'))  || ((Route::currentRouteName()) == ('admin.students.edit')) ? 'menu-open' : ''}}">
 
-            <a href="#" class="nav-link {{((Route::currentRouteName()) == ('students.create')) || ((Route::currentRouteName()) == ('students.index'))  || ((Route::currentRouteName()) == ('students.edit')) ? 'active' : ''}}">
+            <a href="#" class="nav-link {{((Route::currentRouteName()) == ('admin.students.create')) || ((Route::currentRouteName()) == ('admin.students.index'))  || ((Route::currentRouteName()) == ('admin.students.edit')) ? 'active' : ''}}">
             <i class="nav-icon fas fa-user-graduate"></i>
               <p>
                 Students
@@ -45,13 +45,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('students.index') }}" class="nav-link {{((Route::currentRouteName()) == ('students.index'))  || ((Route::currentRouteName()) == ('students.edit')) ? 'active' : ''}}">
+                <a href="{{ route('admin.students.index') }}" class="nav-link {{((Route::currentRouteName()) == ('admin.students.index'))  || ((Route::currentRouteName()) == ('admin.students.edit')) ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('students.create') }}" class="nav-link {{((Route::currentRouteName()) == ('students.create')) ? 'active' : ''}}">
+                <a href="{{ route('admin.students.create') }}" class="nav-link {{((Route::currentRouteName()) == ('admin.students.create')) ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add</p>
                 </a>

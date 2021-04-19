@@ -20,7 +20,8 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin'], function() {
 
 	Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
-	Route::resource('students', App\Http\Controllers\Admin\DashboardController::class);
+	Route::as('admin')->resource('students', App\Http\Controllers\Admin\StudentController::class);
+	Route::post('students/publish', [App\Http\Controllers\Admin\StudentController::class, 'publish'])->name('admin.students.publish');
         
 });
 
