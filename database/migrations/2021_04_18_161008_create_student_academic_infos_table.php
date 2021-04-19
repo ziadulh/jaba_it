@@ -15,12 +15,12 @@ class CreateStudentAcademicInfosTable extends Migration
     {
         Schema::create('student_academic_infos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->onDelete('cascade');
+            $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
             $table->string('session',20);
             $table->string('class',10);
             $table->string('group',10)->nullable();
             $table->string('section',10);
-            $table->mediumInteger('roll');
+            $table->integer('roll');
             $table->timestamps();
         });
     }

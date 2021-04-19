@@ -59,6 +59,57 @@
             </ul>
           </li>
 
+
+          <li class="nav-item {{((Route::currentRouteName()) == ('admin.fees_management.create')) || ((Route::currentRouteName()) == ('admin.fees_management.index'))  || ((Route::currentRouteName()) == ('admin.fees_management.edit')) ? 'menu-open' : ''}}">
+
+            <a href="#" class="nav-link {{((Route::currentRouteName()) == ('admin.fees_management.create')) || ((Route::currentRouteName()) == ('admin.fees_management.index'))  || ((Route::currentRouteName()) == ('admin.fees_management.edit')) ? 'active' : ''}}">
+            <i class="fas fa-comment-dollar"></i>
+              <p>
+                Fees Management
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.fees_management.index') }}" class="nav-link {{((Route::currentRouteName()) == ('admin.fees_management.index'))  || ((Route::currentRouteName()) == ('admin.fees_management.edit')) ? 'active' : ''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Fees List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.fees_management.create') }}" class="nav-link {{((Route::currentRouteName()) == ('admin.fees_management.create')) ? 'active' : ''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item {{((Route::currentRouteName()) == ('admin.payment.create')) || ((Route::currentRouteName()) == ('admin.payment.index'))  || ((Route::currentRouteName()) == ('admin.payment.edit')) ? 'menu-open' : ''}}">
+
+            <a href="#" class="nav-link {{((Route::currentRouteName()) == ('admin.payment.create')) || ((Route::currentRouteName()) == ('admin.payment.index'))  || ((Route::currentRouteName()) == ('admin.payment.edit')) ? 'active' : ''}}">
+            <i class="fas fa-dollar-sign"></i>
+              <p>
+                Payments
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.payment.index') }}" class="nav-link {{((Route::currentRouteName()) == ('admin.payment.index'))  || ((Route::currentRouteName()) == ('admin.payment.edit')) ? 'active' : ''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.payment.create') }}" class="nav-link {{((Route::currentRouteName()) == ('admin.payment.create')) ? 'active' : ''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pay Here</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           
         </ul>
       </nav>
