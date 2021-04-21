@@ -18,7 +18,7 @@
             	<h3 class="card-title">Enter Payment Information</h3>
             </div>
               
-            <form action="{{ route('admin.fees_management.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.payment.store') }}" method="POST" enctype="multipart/form-data">
             	@csrf
                 <div class="card-body">
 
@@ -37,33 +37,26 @@
                   <div class="form-group">
                     <label>Section</label>
                     <select class="form-control" name="section" onchange="getStudent('{{csrf_token()}}','{{route('admin.payment.get_student')}}')">
-                      <option data-select2-id="30" value=null> ---select class---</option>
+                      <option data-select2-id="30" value=null>---None---</option>
                     </select>
                   </div>
 
                   <div class="form-group">
                     <label>Student</label>
                     <select class="form-control" name="student">
-                      <option data-select2-id="30" value=null> ---select class---</option>
+                      <option data-select2-id="30" value=null> ---None---</option>
                     </select>
                   </div>
 
                   <div class="form-group">
                     <label>Fee Category</label>
-                    <select class="form-control" name="type">
-                      <option data-select2-id="30" value="admission">Admission</option>
-                      <option data-select2-id="31" value="tution">Tution</option>
-                      <option data-select2-id="32" value="sports">Sports</option>
+                    <select class="form-control" name="fees_id">
+                      <option data-select2-id="30" value="null">---select type---</option>
+                      @foreach($fees as $fee)
+                      <option data-select2-id="31" value="{{$fee->id}}">{{$fee->name}}</option>
+                      @endforeach
                     </select>
                   </div>
-
-                  <div class="form-group">
-                      <label for="publish">Publish</label>
-                      <select class="form-control" name="publish">
-                        <option value="1">Yes</option>
-                        <option value="0" selected>No</option>
-                      </select>
-                    </div>
 
                 </div>
 

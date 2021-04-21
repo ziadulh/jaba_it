@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Student;
+use App\Models\PaymentLog;
 use Illuminate\Http\Request;
+use App\Models\FeesManagement;
+use App\Http\Controllers\Controller;
 
 class PaymentController extends Controller
 {
@@ -15,7 +17,9 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        $pays = PaymentLog::with('student','fee')->get();
+        // dd($pays);
+        return view('admin.payment.index',compact('pays'));
     }
 
     /**
@@ -25,7 +29,8 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        return view('admin.payment.create');
+        $fees = FeesManagement::select('id','name')->get();
+        return view('admin.payment.create',compact('fees'));
     }
 
     /**
@@ -36,7 +41,18 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'student' => 'required',
+            'fees_id' => 'required',
+            
+        ]);
+
+        PaymentLog::create([
+            'student_id' => $request->student,
+            'fees_id' => $request->fees_id,
+        ]);
+
+        return redirect(route('admin.payment.index'))->with('message', 'Payment completed');
     }
 
     /**
@@ -87,8 +103,9 @@ class PaymentController extends Controller
     public function get_student(Request $request)
     {
         $cls = $request->cls;
-        $student = Student::whereHas('info', function($query) use ($cls){
-            $query->where('class',$cls);
+        $section = $request->section;
+        $student = Student::whereHas('info', function($query) use ($cls,$section){
+            $query->where('class',$cls)->where('section',$section);
         })->get();
         return $student;
     }

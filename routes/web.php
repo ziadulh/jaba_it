@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('admin.dashboard'));
 });
 
 Route::group(['prefix' => 'admin'], function() {
@@ -26,6 +26,7 @@ Route::group(['prefix' => 'admin'], function() {
 	Route::post('fees_management/publish', [App\Http\Controllers\Admin\FeesManagementController::class, 'publish'])->name('admin.fee.publish');
 	Route::as('admin')->resource('payment', App\Http\Controllers\Admin\PaymentController::class);
 	Route::post('payment/get_student', [App\Http\Controllers\Admin\PaymentController::class, 'get_student'])->name('admin.payment.get_student');
+	Route::get('generate-pdf/{id}', [App\Http\Controllers\Admin\PDFController::class, 'generatePDF'])->name('admin.generatePDF');
 
 });
 

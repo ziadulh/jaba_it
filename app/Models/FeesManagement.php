@@ -10,4 +10,9 @@ class FeesManagement extends Model
     use HasFactory;
     protected $fillable = ['name','amount','type','publish'];
 
+    // public function log()
+    // {
+    //     return $this->hasOne(StudentAcademicInfo::class);
+    // }
+
 }

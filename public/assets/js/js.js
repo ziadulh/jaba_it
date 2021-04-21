@@ -1,4 +1,4 @@
-const { forEach } = require("lodash");
+// const { forEach } = require("lodash");
 
 function publish(id,token, url) {
     $.post( url,{_token: token, id: id}, function( data ) {
@@ -14,6 +14,7 @@ function publish_fee(id,token, url) {
 
 function getSection() {
   $('select[name="section"]').empty();
+  $('select[name="student"]').empty();
   $('select[name="section"]').append(
     '<option data-select2-id="30" value=null>---select section---</option>'+
     '<option data-select2-id="30" value="a">A</option>'+

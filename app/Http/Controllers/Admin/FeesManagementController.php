@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\PaymentLog;
 use Illuminate\Http\Request;
 use App\Models\FeesManagement;
 use App\Http\Controllers\Controller;
@@ -72,8 +73,13 @@ class FeesManagementController extends Controller
      */
     public function edit($id)
     {
-        $fee = FeesManagement::find($id);
-        return view('admin.fees.update', compact('fee'));
+        if(count(PaymentLog::where('fees_id', $id)->get()) == 0){
+
+            $fee = FeesManagement::find($id);
+            return view('admin.fees.update', compact('fee'));
+        }else{
+            return redirect(route('admin.fees_management.index'))->with('err_msg', 'You con not update fee information after any successfull payment');
+        }
     }
 
     /**

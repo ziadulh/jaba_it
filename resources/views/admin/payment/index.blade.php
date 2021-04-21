@@ -27,7 +27,7 @@
 
 	<div class="card">
         <div class="card-header">
-            <h3 class="card-title">Students</h3>
+            <h3 class="card-title">Payment Logs</h3>
         </div>
 
         <!-- /.card-header -->
@@ -43,30 +43,23 @@
 				                  <tr role="row">
 				                  	  <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Name
 				                  	  </th>
-				                  	  <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">ON/OFF
+				                  	  <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Type
 				                  	  </th>
-				                  	  <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Action
+				                  	  <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">details
 				                  	  </th>
 				                  </tr>
                   			</thead>
 
                   			<tbody>
 
-                  				@forelse($fees as $fee)
+                  				@forelse($pays as $pay)
 
-                  					<tr role="row" class="{{(($fee->key)/2 == 0) ? 'even' : 'odd'}}">
-				                      <td class="dtr-control sorting_1" tabindex="0">{{$fee->name}}</td>
-									  <td><input type="checkbox" id="checkboxPrimary-{{$fee->id}}" onchange="publish_fee('{{$fee->id}}', '{{ csrf_token() }}', '{{route('admin.fee.publish')}}')" {{$fee->publish == 1 ? 'checked' : ''}}></td>
-				                      <td>
-				                      	<form action="{{ route('admin.fees_management.destroy', $fee->id) }}" method="post" >
-		                                    @csrf
-		                                    {{method_field('delete')}}
-		                                    <!-- <button class="btn btn-primary alert-danger fas fa-trash-alt" onclick="return confirm('Are you sure?')" type="submit">
-		                                    </button> -->
-		                                    <a class="btn btn-primary alert-success fas fa-edit" href="{{route('admin.fees_management.edit',$fee->id)}}"><spam></spam></a>
-		                                </form>
-				                      </td>
+                  					<tr role="row" class="{{(($pay->key)/2 == 0) ? 'even' : 'odd'}}">
+				                      <td class="dtr-control sorting_1" tabindex="0">{{$pay->student->first_name}} {{$pay->student->last_name}}</td>
+				                      <td class="dtr-control sorting_1" tabindex="0">{{$pay->fee->name}}</td>
+				                      <td class="dtr-control sorting_1" tabindex="0"><small><a href="{{ route('admin.generatePDF', $pay->id)}}"><button class="btn btn-primary">print</button></a></td>
 				                    </tr>
+									
 
 								@empty
 								<p>No fee info available</p>
